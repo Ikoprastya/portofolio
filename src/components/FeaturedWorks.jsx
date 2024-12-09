@@ -1,16 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import projectData from "../data/projectData";
 
 const FeaturedWorks = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="my-12 px-6 sm:px-12 md:px-20 lg:px-48">
       <h2 className="text-2xl font-semibold">Latest Project</h2>
       <div className="space-y-6 mt-4">
         {projectData.slice(-3).reverse().map((work, index) => (
           <div
-            key={index}
+            key={work.id}
             className="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 border-b border-red-600 pb-6"
+            onClick={() => navigate(`/projects/${work.id}`)}
           >
             {/* Gambar */}
             <img
